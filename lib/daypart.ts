@@ -23,6 +23,14 @@ export const GREETINGS: Record<DayPart, string> = {
   night: "शुभ रात्रि",
 };
 
+/** Opens the lede. Only this phrase changes; the rest of the line is fixed. */
+export const LEDE_WHEN: Record<DayPart, string> = {
+  morning: "Aaj ki subah",
+  afternoon: "Aaj ki dopahar",
+  evening: "Aaj ki shaam",
+  night: "Aaj ki raat",
+};
+
 /** Morning and afternoon get the Rangoli list; evening and night get the ghazals. */
 export function playlistFor(part: DayPart): string {
   return part === "evening" || part === "night" ? NIGHT_PLAYLIST_ID : PLAYLIST_ID;

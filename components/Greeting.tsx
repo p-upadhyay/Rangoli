@@ -1,19 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { dayPart, GREETINGS } from "@/lib/daypart";
+import { dayPart, GREETINGS, LEDE_WHEN, type DayPart } from "@/lib/daypart";
 
 /**
- * Greets by the visitor's own clock. Empty on the server for the same reason
- * as LocalTime — the timezone is only knowable in the browser — with a
- * non-breaking space holding the line height so nothing jumps on hydration.
+ * Greeting and lede, both keyed off the visitor's own clock. Kept in one
+ * component so they read a single dayPart and can never disagree.
+ *
+ * Empty on the server for the same reason as LocalTime — the timezone is only
+ * knowable in the browser — with non-breaking spaces holding both line heights
+ * so nothing jumps on hydration.
  */
 export default function Greeting() {
-  const [greeting, setGreeting] = useState<string | null>(null);
+  const [part, setPart] = useState<DayPart | null>(null);
 
   useEffect(() => {
-    setGreeting(GREETINGS[dayPart(new Date().getHours())]);
+    setPart(dayPart(new Date().getHours()));
   }, []);
 
-  return <h1>{greeting ?? " "}</h1>;
+  return (
+    <>
+      <h1>{part ? GREETINGS[part] : " "}</h1>
+      <p className="lede">
+        {part ? (
+          <>
+            {LEDE_WHEN[part]}, kuch purani<br />yaadon ke naam…
+          </>
+        ) : (
+          <>
+            &nbsp;<br />&nbsp;
+          </>
+        )}
+      </p>
+    </>
+  );
 }

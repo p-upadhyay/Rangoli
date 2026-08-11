@@ -30,7 +30,6 @@ export default function Home() {
           <div className="tv-stage"><VintageTV /></div>
           <div className="hero-copy">
             <Greeting />
-            <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
             <FeaturedSong />
           </div>
         </section>
