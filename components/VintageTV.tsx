@@ -146,7 +146,7 @@ export default function VintageTV() {
           )}
         </div>
         <div className="tv-controls"><span /><span /></div>
-        <div className="tv-brand">YAADON</div>
+        <div className="tv-brand">YAADEIN</div>
       </div>
 
       {live && (
