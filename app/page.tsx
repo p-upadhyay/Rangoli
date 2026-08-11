@@ -1,4 +1,7 @@
+import EpisodeMeta from "@/components/EpisodeMeta";
 import FarmaishForm from "@/components/FarmaishForm";
+import FeaturedSong from "@/components/FeaturedSong";
+import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
 import { memories, songs } from "@/data/episodes";
 
@@ -18,24 +21,18 @@ export default function Home() {
         <div className="morning-time"><span>☀</span><strong>8:00 AM</strong><small>Sunday ritual</small></div>
       </header>
 
-      <section className="hero" id="top">
-        <div className="tv-stage"><VintageTV /></div>
-        <div className="hero-copy">
-          <div className="sunline">रविवार की सुबह ☀</div>
-          <h1>सुप्रभात</h1>
-          <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
-          <div className="episode-meta"><span>रविवार</span><span>8:00 AM IST</span><span>8 चुने हुए गीत</span></div>
-          <div className="featured-song">
-            <div className="vinyl" aria-hidden="true"><span /></div>
-            <div>
-              <div className="section-kicker">♪ आज का पहला गीत</div>
-              <h2>{songs[0].title}</h2>
-              <p>{songs[0].film} · {songs[0].year}</p>
-              <small>{songs[0].artists}</small>
-            </div>
+      <PlayerProvider>
+        <section className="hero" id="top">
+          <div className="tv-stage"><VintageTV /></div>
+          <div className="hero-copy">
+            <div className="sunline">रविवार की सुबह ☀</div>
+            <h1>सुप्रभात</h1>
+            <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
+            <EpisodeMeta fallbackCount={songs.length} />
+            <FeaturedSong fallback={songs[0]} />
           </div>
-        </div>
-      </section>
+        </section>
+      </PlayerProvider>
 
       <section className="content-wrap two-column" id="farmaish">
         <FarmaishForm />

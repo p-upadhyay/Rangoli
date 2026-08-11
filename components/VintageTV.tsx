@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { PLAYLIST_ID } from "@/data/playlist";
+import { usePlayer } from "./PlayerContext";
 
 type YTPlayer = {
   playVideo(): void;
@@ -10,6 +11,7 @@ type YTPlayer = {
   previousVideo(): void;
   destroy(): void;
   getVideoData(): { title?: string; author?: string };
+  getPlaylist(): string[] | undefined;
 };
 
 type YTEvent = { target: YTPlayer; data: number };
@@ -52,9 +54,7 @@ function loadPlayerApi() {
 }
 
 export default function VintageTV() {
-  const [on, setOn] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const [track, setTrack] = useState("");
+  const { on, playing, now, setOn, setPlaying, setNow, setCount } = usePlayer();
   const stage = useRef<HTMLDivElement>(null);
   const player = useRef<YTPlayer | null>(null);
 
@@ -78,10 +78,14 @@ export default function VintageTV() {
         // removes seeking — there is no scrubber in our own controls.
         playerVars: { listType: "playlist", list: PLAYLIST_ID, autoplay: 1, rel: 0, playsinline: 1, controls: 0 },
         events: {
-          onReady: (e) => e.target.playVideo(),
+          onReady: (e) => {
+            e.target.playVideo();
+            setCount(e.target.getPlaylist()?.length ?? 0);
+          },
           onStateChange: (e) => {
             setPlaying(e.data === YT.PlayerState.PLAYING);
-            setTrack(e.target.getVideoData().title ?? "");
+            const { title, author } = e.target.getVideoData();
+            setNow(title ? { title, author: author ?? "" } : null);
           },
         },
       });
@@ -92,8 +96,11 @@ export default function VintageTV() {
       player.current?.destroy();
       player.current = null;
       if (stage.current) stage.current.innerHTML = "";
+      setPlaying(false);
+      setNow(null);
+      setCount(0);
     };
-  }, [live]);
+  }, [live, setPlaying, setNow, setCount]);
 
   return (
     <div className={`tv-unit ${live ? "is-live" : ""}`}>
@@ -122,7 +129,7 @@ export default function VintageTV() {
         <div className="tv-nowplaying">
           <div className="np-track">
             <span className="np-label">♪ अभी बज रहा है</span>
-            <strong>{track || "…"}</strong>
+            <strong>{now?.title ?? "…"}</strong>
           </div>
           <div className="np-buttons">
             <button onClick={() => player.current?.previousVideo()} aria-label="पिछला गीत">⏮</button>
