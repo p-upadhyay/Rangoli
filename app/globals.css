@@ -37,6 +37,23 @@ nav a:hover { color:var(--red); }
 .tv-shell { width:100%; aspect-ratio:1.42; padding:22px 80px 28px 24px; border-radius:35px; background:linear-gradient(145deg,#332116,#120d09); box-shadow:0 24px 60px rgba(29,14,4,.45); position:relative; }
 .tv-screen { height:100%; border-radius:42%/12%; overflow:hidden; border:8px solid #765135; position:relative; background:#d7c7a5; box-shadow:inset 0 0 50px #4a3626; }
 .screen-glow { position:absolute; inset:0; pointer-events:none; background: repeating-linear-gradient(0deg,rgba(255,255,255,.06),rgba(255,255,255,.06) 2px,rgba(0,0,0,.025) 3px); opacity:.8; }
+/* CRT power-on: a dot widens into a scanline, then blooms open to fill the tube. */
+.tv-warmup { position:absolute; inset:0; z-index:4; overflow:hidden; background:#0b0805; }
+.tv-warmup span { position:absolute; inset:0; transform-origin:center; background:#fff6e2; animation: crt-open 820ms cubic-bezier(.22,.72,.2,1) forwards; }
+@keyframes crt-open {
+  0%   { transform:scale(.03,.006); opacity:0; }
+  14%  { transform:scale(.03,.006); opacity:1; }
+  42%  { transform:scale(1,.006);   opacity:1; }
+  72%  { transform:scale(1,1);      opacity:.95; }
+  86%  { transform:scale(1,1);      opacity:.45; }
+  100% { transform:scale(1,1);      opacity:0; }
+}
+/* The tube coming up to temperature on first paint. */
+.tv-screen { animation: screen-wake 1100ms ease-out both; }
+@keyframes screen-wake {
+  0%   { box-shadow:inset 0 0 120px 30px #000; }
+  100% { box-shadow:inset 0 0 50px #4a3626; }
+}
 .tv-video { position:absolute; inset:0; z-index:3; background:#000; }
 .tv-video iframe { display:block; width:100%; height:100%; border:0; }
 .tv-hint { margin-top:12px; font-size:11px; color:#5d4326; opacity:.8; }
@@ -71,7 +88,9 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .song-pending { opacity:.6; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes waking { 0%,100% { opacity:.55 } 50% { opacity:1 } }
-@media (prefers-reduced-motion: reduce) { .vinyl.is-spinning, .vinyl.is-waking { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .vinyl.is-spinning, .vinyl.is-waking, .tv-screen, .tv-warmup span, .tv-on .screen-glow { animation: none; }
+}
 .primary-button { display:block; border:0; border-radius:999px; padding:13px 20px; color:white; background:var(--maroon); cursor:pointer; font-weight:700; text-align:center; }
 .primary-button.inline { width:max-content; margin-top:14px; font-size:13px; }
 .content-wrap { max-width:1500px; margin:0 auto; padding:42px 4vw; }

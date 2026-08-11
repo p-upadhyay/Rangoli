@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePlayer } from "./PlayerContext";
 
 type YTPlayer = {
@@ -51,12 +51,37 @@ function loadPlayerApi() {
   return apiReady;
 }
 
+/** Length of the CRT power-on animation. Must match crt-open in globals.css. */
+const WARMUP_MS = 820;
+
 export default function VintageTV() {
   const { on, playing, now, playlistId, setOn, setPlaying, setNow } = usePlayer();
+  const [warm, setWarm] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
   const player = useRef<YTPlayer | null>(null);
 
-  const live = on && playlistId !== "";
+  const warming = on && !warm;
+  const live = on && warm && playlistId !== "";
+
+  // The tube warming up. Replays on a playlist change too, so switching moods
+  // reads as changing channels instead of a black frame while the player rebuilds.
+  useEffect(() => {
+    if (!on) {
+      setWarm(false);
+      return;
+    }
+    setWarm(false);
+    // Kick off the API download now so the animation hides real latency
+    // rather than being added to it.
+    loadPlayerApi();
+
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      setWarm(true);
+      return;
+    }
+    const timer = setTimeout(() => setWarm(true), WARMUP_MS);
+    return () => clearTimeout(timer);
+  }, [on, playlistId]);
 
   useEffect(() => {
     if (!live) return;
@@ -101,7 +126,11 @@ export default function VintageTV() {
     <div className={`tv-unit ${live ? "is-live" : ""}`}>
       <div className={`tv-shell ${on ? "tv-on" : ""}`}>
         <div className="tv-screen">
-          {live ? (
+          {warming ? (
+            // Renders instead of the player, never over it — YouTube's terms
+            // forbid drawing anything in front of the embed.
+            <div className="tv-warmup"><span /></div>
+          ) : live ? (
             <div className="tv-video" ref={stage} />
           ) : (
             <>
