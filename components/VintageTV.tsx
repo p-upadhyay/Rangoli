@@ -73,7 +73,10 @@ export default function VintageTV() {
         width: "100%",
         height: "100%",
         host: "https://www.youtube-nocookie.com",
-        playerVars: { listType: "playlist", list: PLAYLIST_ID, autoplay: 1, rel: 0, playsinline: 1 },
+        // controls:0 hides YouTube's control bar (and the logo button it carries);
+        // the now-playing bar below the TV drives playback instead. Note it also
+        // removes seeking — there is no scrubber in our own controls.
+        playerVars: { listType: "playlist", list: PLAYLIST_ID, autoplay: 1, rel: 0, playsinline: 1, controls: 0 },
         events: {
           onReady: (e) => e.target.playVideo(),
           onStateChange: (e) => {

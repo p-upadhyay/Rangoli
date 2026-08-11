@@ -11,7 +11,6 @@ export default function Home() {
           <span><small>Yaadon Ki</small><strong>Rangoli</strong><em>पुराने गीत, नई यादें</em></span>
         </a>
         <nav>
-          <a href="#rangoli">आज की रंगोली</a>
           <a href="#archive">पिछले रविवार</a>
           <a href="#farmaish">फरमाइश</a>
           <a href="#yaadein">यादों के रंग</a>
@@ -33,29 +32,9 @@ export default function Home() {
               <h2>{songs[0].title}</h2>
               <p>{songs[0].film} · {songs[0].year}</p>
               <small>{songs[0].artists}</small>
-              <a className="primary-button inline" href="#rangoli">▶ आज की रंगोली सुनिए</a>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="content-wrap playlist-section" id="rangoli">
-        <div className="section-heading">
-          <div><span className="eyebrow">इस रविवार</span><h2>आज की रंगोली</h2></div>
-          <p>8 चुनिंदा गीत, खास आपके लिए ♡</p>
-        </div>
-        <div className="song-grid">
-          {songs.map((song, i) => (
-            <article className="song-card" key={song.title}>
-              <div className="song-art"><span>{i + 1}</span><div className="record-mini">♪</div></div>
-              <h3>{song.title}</h3>
-              <p>{song.film} · {song.year}</p>
-              <small>{song.artists}</small>
-              <em>{song.mood}</em>
-            </article>
-          ))}
-        </div>
-        <p className="copyright-note">At launch, each card should link to an official/licensed YouTube or music-service source. No audio files are included in this starter.</p>
       </section>
 
       <section className="content-wrap two-column" id="farmaish">
