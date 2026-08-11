@@ -20,7 +20,7 @@ export const songs: Song[] = [
 export const memories = [
   ["☂", "Barsaat Ke Geet"],
   ["☕", "Sardi Ki Subah"],
-  ["♡", "Papa Ke Pasandida"],
+  ["♡", "Bus Ki Yatra"],
   ["✿", "Lata Special"],
   ["◉", "Kishore & Rafi"],
   ["✒", "Gulzar Subah"],
