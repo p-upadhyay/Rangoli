@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FarmaishForm from "@/components/FarmaishForm";
 import FeaturedSong from "@/components/FeaturedSong";
+import Greeting from "@/components/Greeting";
 import ListenersTicker from "@/components/ListenersTicker";
 import LocalTime from "@/components/LocalTime";
 import PostcardFarmaish from "@/components/PostcardFarmaish";
@@ -28,7 +29,7 @@ export default function Home() {
         <section className="hero" id="top">
           <div className="tv-stage"><VintageTV /></div>
           <div className="hero-copy">
-            <h1>सुप्रभात</h1>
+            <Greeting />
             <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
             <FeaturedSong />
           </div>

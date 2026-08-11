@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { PLAYLIST_ID } from "@/data/playlist";
+import { dayPart, playlistFor } from "@/lib/daypart";
 
 type PlayerValue = {
   on: boolean;
@@ -24,6 +25,12 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const [now, setNow] = useState<string | null>(null);
   const [playlistId, setPlaylistId] = useState(PLAYLIST_ID);
+
+  // Pick the playlist from the visitor's local hour, once on mount. Runs before
+  // anyone can press play, and never again — so a mood chosen later stands.
+  useEffect(() => {
+    setPlaylistId(playlistFor(dayPart(new Date().getHours())));
+  }, []);
 
   const value = useMemo(
     () => ({ on, playing, now, playlistId, setOn, setPlaying, setNow, setPlaylistId }),

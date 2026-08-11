@@ -13,3 +13,7 @@
 // Annotated as `string` so the empty-value guard in VintageTV stays a legal
 // comparison — without it TS narrows to a literal type and rejects the check.
 export const PLAYLIST_ID: string = "PLEvO8ItK00Ko";
+
+// What the TV loads for evening and night arrivals. Also the playlist behind
+// the "Dost, Maggi aur Jagjit" mood — defined here so the id lives in one place.
+export const NIGHT_PLAYLIST_ID = "PLF3rANb3ZomM";
