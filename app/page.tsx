@@ -22,7 +22,6 @@ export default function Home() {
         <section className="hero" id="top">
           <div className="tv-stage"><VintageTV /></div>
           <div className="hero-copy">
-            <div className="sunline">रविवार की सुबह ☀</div>
             <h1>सुप्रभात</h1>
             <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
             <EpisodeMeta fallbackCount={songs.length} />
