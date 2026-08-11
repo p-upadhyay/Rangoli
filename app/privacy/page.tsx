@@ -51,8 +51,18 @@ export default function Privacy() {
 
       <h2>Farmaish requests</h2>
       <p>
-        The song-request form is switched off at the moment. If it comes back, this page will
-        say what is stored and for how long before the form collects anything.
+        If you send a farmaish, we store exactly what you typed into the form: your name, your
+        city, the song you asked for, and the memory you chose to write. Nothing else — no IP
+        address, no email, no account. It is kept in a Supabase database and read only by the
+        person running this site.
+      </p>
+      <p>
+        Your memory is not published anywhere unless you tick the box saying it may be. Leaving
+        it unticked still sends us the farmaish; it just stays private.
+      </p>
+      <p>
+        Want yours removed? Write to the address below with the name and city you used and it
+        will be deleted.
       </p>
 
       <h2>Contact</h2>

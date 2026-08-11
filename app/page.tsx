@@ -1,5 +1,7 @@
 import Link from "next/link";
+import FarmaishForm from "@/components/FarmaishForm";
 import FeaturedSong from "@/components/FeaturedSong";
+import ListenersTicker from "@/components/ListenersTicker";
 import LocalTime from "@/components/LocalTime";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
@@ -15,6 +17,7 @@ export default function Home() {
         </a>
         <nav>
           <a href="#yaadein">यादों के रंग</a>
+          <a href="#farmaish">फरमाइश</a>
         </nav>
         <LocalTime />
       </header>
@@ -36,9 +39,15 @@ export default function Home() {
         </section>
       </PlayerProvider>
 
+      <section className="content-wrap farmaish-section" id="farmaish">
+        <div className="section-heading"><div><span className="eyebrow">आपकी बारी</span><h2>फरमाइश</h2></div></div>
+        <FarmaishForm />
+      </section>
+
       <footer>
         <div className="footer-logo">◉ <strong>Yaadon Ki Rangoli</strong></div>
         <p>दूरदर्शन की यादगार परंपराओं को नमन · An unofficial fan-made nostalgia project. Not affiliated with Doordarshan.</p>
+        <ListenersTicker />
         <div>
           <Link href="/privacy">गोपनीयता</Link>
           <Link href="/terms">उपयोग की शर्तें</Link>

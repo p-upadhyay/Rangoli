@@ -109,6 +109,13 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .song-card em { display:block; font-style:normal; color:var(--red); font-weight:700; font-size:12px; margin-top:10px; }
 .copyright-note { margin:25px 0 0; font-size:12px; opacity:.62; }
 .two-column { display:grid; grid-template-columns:1fr 1fr; gap:30px; background:var(--paper); max-width:none; padding-left:7vw; padding-right:7vw; }
+.farmaish-section { background:var(--paper); max-width:none; padding-left:7vw; padding-right:7vw; }
+.farmaish-section .farmaish-card { max-width:620px; }
+.consent { display:flex; align-items:flex-start; gap:9px; font-size:12px; line-height:1.45; cursor:pointer; }
+.consent input { width:16px; height:16px; margin-top:1px; flex:0 0 auto; accent-color:var(--maroon); }
+.trap { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+.form-error { color:var(--maroon); font-weight:700; }
+.listeners { margin:0; font-size:12px; opacity:.9; white-space:nowrap; }
 .farmaish-card,.letter-card { border:1px solid var(--line); border-radius:15px; padding:25px; background:rgba(255,247,230,.75); }
 .farmaish-card { display:grid; gap:12px; }
 .farmaish-card input,.farmaish-card textarea { width:100%; border:1px solid #caa775; background:#fff9e9; padding:11px 13px; border-radius:7px; outline:none; }
