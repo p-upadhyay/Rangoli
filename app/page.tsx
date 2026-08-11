@@ -1,7 +1,7 @@
 import FeaturedSong from "@/components/FeaturedSong";
+import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
-import { memories } from "@/data/episodes";
 
 export default function Home() {
   return (
@@ -17,6 +17,7 @@ export default function Home() {
         <div className="morning-time"><span>☀</span><strong>8:00 AM</strong><small>Sunday ritual</small></div>
       </header>
 
+      {/* Wraps both sections: the mood grid drives the TV up in the hero. */}
       <PlayerProvider>
         <section className="hero" id="top">
           <div className="tv-stage"><VintageTV /></div>
@@ -26,14 +27,12 @@ export default function Home() {
             <FeaturedSong />
           </div>
         </section>
-      </PlayerProvider>
 
-      <section className="content-wrap memory-section" id="yaadein">
-        <div className="section-heading"><div><span className="eyebrow">सुनिए अपने मूड से</span><h2>यादों के रंग</h2></div></div>
-        <div className="memory-grid">
-          {memories.map(([icon, title]) => <button key={title}><span>{icon}</span>{title}</button>)}
-        </div>
-      </section>
+        <section className="content-wrap memory-section" id="yaadein">
+          <div className="section-heading"><div><span className="eyebrow">सुनिए अपने मूड से</span><h2>यादों के रंग</h2></div></div>
+          <MoodGrid />
+        </section>
+      </PlayerProvider>
 
       <footer>
         <div className="footer-logo">◉ <strong>Yaadon Ki Rangoli</strong></div>

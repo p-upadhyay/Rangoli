@@ -17,14 +17,21 @@ export const songs: Song[] = [
   { title: "Main Zindagi Ka Saath", film: "Hum Dono", year: 1961, artists: "Mohammed Rafi", mood: "Vidaai Geet" }
 ];
 
-export const memories = [
-  ["☂", "Barsaat Ke Geet"],
-  ["☕", "Sardi Ki Subah"],
-  ["♡", "Bus Ki Yatra"],
-  ["✿", "Lata Special"],
-  ["◉", "Kishore & Rafi"],
-  ["✒", "Gulzar Subah"],
-  ["◼", "Black & White"],
-  ["●", "70s Ke Geet"],
-  ["🇮🇳", "15 August Special"]
+export type Memory = {
+  icon: string;
+  title: string;
+  /** Public YouTube playlist id. Moods without one render disabled. */
+  playlistId?: string;
+};
+
+export const memories: Memory[] = [
+  { icon: "☂", title: "Barsaat Ke Geet" },
+  { icon: "☕", title: "Sardi Ki Subah" },
+  { icon: "♡", title: "Bus Ka Khushnuma Safar", playlistId: "PLIXqCcJKDSx4" },
+  { icon: "✿", title: "Lata Special" },
+  { icon: "◉", title: "Kishore & Rafi" },
+  { icon: "✒", title: "Gulzar Subah" },
+  { icon: "◼", title: "Black & White" },
+  { icon: "●", title: "70s Ke Geet" },
+  { icon: "🇮🇳", title: "15 August Special" }
 ];

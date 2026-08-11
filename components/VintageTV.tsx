@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { PLAYLIST_ID } from "@/data/playlist";
 import { usePlayer } from "./PlayerContext";
 
 type YTPlayer = {
@@ -53,11 +52,11 @@ function loadPlayerApi() {
 }
 
 export default function VintageTV() {
-  const { on, playing, now, setOn, setPlaying, setNow } = usePlayer();
+  const { on, playing, now, playlistId, setOn, setPlaying, setNow } = usePlayer();
   const stage = useRef<HTMLDivElement>(null);
   const player = useRef<YTPlayer | null>(null);
 
-  const live = on && PLAYLIST_ID !== "";
+  const live = on && playlistId !== "";
 
   useEffect(() => {
     if (!live) return;
@@ -75,7 +74,7 @@ export default function VintageTV() {
         // controls:0 hides YouTube's control bar (and the logo button it carries);
         // the now-playing bar below the TV drives playback instead. Note it also
         // removes seeking — there is no scrubber in our own controls.
-        playerVars: { listType: "playlist", list: PLAYLIST_ID, autoplay: 1, rel: 0, playsinline: 1, controls: 0 },
+        playerVars: { listType: "playlist", list: playlistId, autoplay: 1, rel: 0, playsinline: 1, controls: 0 },
         events: {
           onReady: (e) => e.target.playVideo(),
           onStateChange: (e) => {
@@ -94,7 +93,9 @@ export default function VintageTV() {
       setPlaying(false);
       setNow(null);
     };
-  }, [live, setPlaying, setNow]);
+    // playlistId is a dependency: switching moods tears the player down and
+    // rebuilds it on the new list, rather than mutating a live player.
+  }, [live, playlistId, setPlaying, setNow]);
 
   return (
     <div className={`tv-unit ${live ? "is-live" : ""}`}>
