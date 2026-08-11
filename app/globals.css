@@ -162,6 +162,11 @@ blockquote { margin:24px 0 14px; font-size:19px; line-height:1.55; }
 .legal code { font-size:13px; padding:1px 5px; border-radius:4px; background:rgba(94,53,24,.1); }
 .legal-back { display:inline-block; color:var(--red); font-weight:700; font-size:13px; }
 .legal-updated { font-size:12px; opacity:.66; }
+.share { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px 22px; padding:26px 4vw; background:var(--paper-light); border-top:1px solid var(--line); }
+.share-label { font-weight:700; color:var(--maroon); font-size:15px; }
+.share-buttons { display:flex; flex-wrap:wrap; gap:10px; }
+.share-buttons a,.share-buttons button { border:1px solid var(--line); border-radius:999px; padding:8px 16px; background:#f3e2bd; color:var(--ink); font-size:13px; font-weight:700; cursor:pointer; }
+.share-buttons a:hover,.share-buttons button:hover { border-color:var(--red); color:var(--red); }
 footer { min-height:90px; background:#68261d; color:#f8e7c8; display:flex; align-items:center; justify-content:space-between; gap:25px; padding:20px 4vw; font-size:12px; }
 .footer-logo { font-size:18px; white-space:nowrap; }
 footer p { text-align:center; opacity:.85; }

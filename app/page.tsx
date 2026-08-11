@@ -5,6 +5,7 @@ import Greeting from "@/components/Greeting";
 import ListenersTicker from "@/components/ListenersTicker";
 import LocalTime from "@/components/LocalTime";
 import PostcardFarmaish from "@/components/PostcardFarmaish";
+import ShareLinks from "@/components/ShareLinks";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
@@ -47,6 +48,8 @@ export default function Home() {
           <PostcardFarmaish />
         </div>
       </section>
+
+      <ShareLinks />
 
       <footer>
         <div className="footer-logo">◉ <strong>Yaadon Ki Rangoli</strong></div>
