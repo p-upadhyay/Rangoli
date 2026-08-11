@@ -84,8 +84,7 @@ export default function VintageTV() {
           },
           onStateChange: (e) => {
             setPlaying(e.data === YT.PlayerState.PLAYING);
-            const { title, author } = e.target.getVideoData();
-            setNow(title ? { title, author: author ?? "" } : null);
+            setNow(e.target.getVideoData().title ?? null);
           },
         },
       });
@@ -129,7 +128,7 @@ export default function VintageTV() {
         <div className="tv-nowplaying">
           <div className="np-track">
             <span className="np-label">♪ अभी बज रहा है</span>
-            <strong>{now?.title ?? "…"}</strong>
+            <strong>{now ?? "…"}</strong>
           </div>
           <div className="np-buttons">
             <button onClick={() => player.current?.previousVideo()} aria-label="पिछला गीत">⏮</button>

@@ -2,16 +2,15 @@
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 
-export type NowPlaying = { title: string; author: string };
-
 type PlayerValue = {
   on: boolean;
   playing: boolean;
-  now: NowPlaying | null;
+  /** Title of the current track, or null when nothing is playing. */
+  now: string | null;
   count: number;
   setOn: (v: boolean | ((prev: boolean) => boolean)) => void;
   setPlaying: (v: boolean) => void;
-  setNow: (v: NowPlaying | null) => void;
+  setNow: (v: string | null) => void;
   setCount: (v: number) => void;
 };
 
@@ -21,7 +20,7 @@ const PlayerContext = createContext<PlayerValue | null>(null);
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const [on, setOn] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [now, setNow] = useState<NowPlaying | null>(null);
+  const [now, setNow] = useState<string | null>(null);
   const [count, setCount] = useState(0);
 
   const value = useMemo(

@@ -13,10 +13,7 @@ export default function FeaturedSong({ fallback }: { fallback: Song }) {
       <div aria-live="polite">
         <div className="section-kicker">{now ? "♪ अभी बज रहा है" : "♪ आज का पहला गीत"}</div>
         {now ? (
-          <>
-            <h2>{now.title}</h2>
-            {now.author && <p>{now.author}</p>}
-          </>
+          <h2>{now}</h2>
         ) : (
           <>
             <h2>{fallback.title}</h2>

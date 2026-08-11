@@ -1,5 +1,4 @@
 import EpisodeMeta from "@/components/EpisodeMeta";
-import FarmaishForm from "@/components/FarmaishForm";
 import FeaturedSong from "@/components/FeaturedSong";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
@@ -14,8 +13,6 @@ export default function Home() {
           <span><small>Yaadon Ki</small><strong>Rangoli</strong><em>पुराने गीत, नई यादें</em></span>
         </a>
         <nav>
-          <a href="#archive">पिछले रविवार</a>
-          <a href="#farmaish">फरमाइश</a>
           <a href="#yaadein">यादों के रंग</a>
         </nav>
         <div className="morning-time"><span>☀</span><strong>8:00 AM</strong><small>Sunday ritual</small></div>
@@ -34,33 +31,10 @@ export default function Home() {
         </section>
       </PlayerProvider>
 
-      <section className="content-wrap two-column" id="farmaish">
-        <FarmaishForm />
-        <aside className="letter-card">
-          <span className="postmark">इस हफ्ते की फरमाइश</span>
-          <blockquote>“Kahin Door Jab Din Dhal Jaye… Papa used to play this on Sunday mornings.”</blockquote>
-          <p>— Pankaj, Seattle</p>
-          <div className="stamp">यादें<br />₹ 1</div>
-        </aside>
-      </section>
-
       <section className="content-wrap memory-section" id="yaadein">
         <div className="section-heading"><div><span className="eyebrow">सुनिए अपने मूड से</span><h2>यादों के रंग</h2></div></div>
         <div className="memory-grid">
           {memories.map(([icon, title]) => <button key={title}><span>{icon}</span>{title}</button>)}
-        </div>
-      </section>
-
-      <section className="content-wrap archive" id="archive">
-        <div>
-          <span className="eyebrow">पिछले रविवार</span>
-          <h2>हर रविवार, एक नई याद</h2>
-          <p>Weekly episodes can live here as simple data files at first, then move to a small CMS when the archive grows.</p>
-        </div>
-        <div className="archive-cards">
-          <article><b>03 AUG</b><span>Monsoon Special</span><small>बारिश, चाय और 8 सदाबहार गीत</small></article>
-          <article><b>27 JUL</b><span>Rafi Sahab</span><small>एक सुबह मोहम्मद रफ़ी के नाम</small></article>
-          <article><b>20 JUL</b><span>Gulzar Morning</span><small>अल्फ़ाज़ जो रविवार को धीमा कर दें</small></article>
         </div>
       </section>
 
