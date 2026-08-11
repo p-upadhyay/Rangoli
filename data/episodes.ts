@@ -29,5 +29,5 @@ export const memories: Memory[] = [
   { icon: "☕", title: "Sardi Ki Subah", playlistId: "PLR8hEr_CR5Ls" },
   { icon: "⇝", title: "Bus Ka Khushnuma Safar", playlistId: "PLIXqCcJKDSx4" },
   { icon: "✒", title: "Gulzar Subah" },
-  { icon: "☾", title: "Dost, Maggi aur Jagjit" }
+  { icon: "☾", title: "Dost, Maggi aur Jagjit", playlistId: "PLF3rANb3ZomM" }
 ];
