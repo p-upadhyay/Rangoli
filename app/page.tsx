@@ -1,7 +1,7 @@
 import FeaturedSong from "@/components/FeaturedSong";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
-import { memories, songs } from "@/data/episodes";
+import { memories } from "@/data/episodes";
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
           <div className="hero-copy">
             <h1>सुप्रभात</h1>
             <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
-            <FeaturedSong fallback={songs[0]} />
+            <FeaturedSong />
           </div>
         </section>
       </PlayerProvider>

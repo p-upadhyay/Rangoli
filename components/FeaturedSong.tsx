@@ -1,24 +1,36 @@
 "use client";
 
 import { usePlayer } from "./PlayerContext";
-import type { Song } from "@/data/episodes";
 
-/** Shows the live track once the TV is playing, otherwise the curated fallback. */
-export default function FeaturedSong({ fallback }: { fallback: Song }) {
-  const { now, playing } = usePlayer();
+/**
+ * Three states: idle invites you to start, connecting covers the gap while the
+ * YouTube API loads and buffers, playing shows the live title. The hero never
+ * names a track it cannot guarantee will play.
+ */
+export default function FeaturedSong() {
+  const { on, playing, now } = usePlayer();
+  const connecting = on && !now;
 
   return (
     <div className="featured-song">
-      <div className={`vinyl ${playing ? "is-spinning" : ""}`} aria-hidden="true"><span /></div>
+      <div
+        className={`vinyl ${playing ? "is-spinning" : ""} ${connecting ? "is-waking" : ""}`}
+        aria-hidden="true"
+      >
+        <span />
+      </div>
       <div aria-live="polite">
-        <div className="section-kicker">{now ? "♪ अभी बज रहा है" : "♪ आज का पहला गीत"}</div>
+        <div className="section-kicker">
+          {now ? "♪ अभी बज रहा है" : connecting ? "♪ जुड़ रहे हैं…" : "♪ आज की रंगोली"}
+        </div>
         {now ? (
           <h2>{now}</h2>
+        ) : connecting ? (
+          <h2 className="song-pending">एक पल…</h2>
         ) : (
           <>
-            <h2>{fallback.title}</h2>
-            <p>{fallback.film} · {fallback.year}</p>
-            <small>{fallback.artists}</small>
+            <h2>टीवी चालू कीजिए</h2>
+            <p>रविवार सुबह की रंगोली</p>
           </>
         )}
       </div>

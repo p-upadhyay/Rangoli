@@ -67,8 +67,11 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .vinyl { width:125px; aspect-ratio:1; flex:0 0 auto; border-radius:50%; background:repeating-radial-gradient(circle,#211510 0 6px,#322016 7px 11px); display:grid; place-items:center; box-shadow:0 8px 20px rgba(0,0,0,.25); }
 .vinyl span { width:35%; aspect-ratio:1; border-radius:50%; background:var(--gold); border:8px solid var(--red); }
 .vinyl.is-spinning { animation: spin 4s linear infinite; }
+.vinyl.is-waking { animation: waking 1.6s ease-in-out infinite; }
+.song-pending { opacity:.6; }
 @keyframes spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .vinyl.is-spinning { animation: none; } }
+@keyframes waking { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+@media (prefers-reduced-motion: reduce) { .vinyl.is-spinning, .vinyl.is-waking { animation: none; } }
 .primary-button { display:block; border:0; border-radius:999px; padding:13px 20px; color:white; background:var(--maroon); cursor:pointer; font-weight:700; text-align:center; }
 .primary-button.inline { width:max-content; margin-top:14px; font-size:13px; }
 .content-wrap { max-width:1500px; margin:0 auto; padding:42px 4vw; }
