@@ -3,6 +3,7 @@ import FarmaishForm from "@/components/FarmaishForm";
 import FeaturedSong from "@/components/FeaturedSong";
 import ListenersTicker from "@/components/ListenersTicker";
 import LocalTime from "@/components/LocalTime";
+import PostcardFarmaish from "@/components/PostcardFarmaish";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
@@ -41,7 +42,10 @@ export default function Home() {
 
       <section className="content-wrap farmaish-section" id="farmaish">
         <div className="section-heading"><div><span className="eyebrow">आपकी बारी</span><h2>फरमाइश</h2></div></div>
-        <FarmaishForm />
+        <div className="farmaish-grid">
+          <FarmaishForm />
+          <PostcardFarmaish />
+        </div>
       </section>
 
       <footer>

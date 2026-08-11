@@ -15,6 +15,7 @@ create table if not exists public.requests (
   song               text not null check (char_length(song) between 1 and 160),
   memory             text check (char_length(memory) <= 2000),
   consent_to_publish boolean not null default false,
+  published          boolean not null default false,
   created_at         timestamptz not null default now()
 );
 
@@ -28,10 +29,21 @@ create policy "anon can submit a farmaish"
   to anon
   with check (true);
 
--- Deliberately no select, update or delete policy. With RLS enabled and no
--- policy for an action, that action is denied. Do not add a public select
--- policy unless you also add a moderation flag — otherwise every submission
--- becomes world-readable the moment it is written.
+-- Read access is gated twice: the sender must have ticked the consent box, and
+-- you must have marked the row published in the Table Editor. Nothing reaches
+-- the site on its own, so a spam submission cannot render itself onto the page.
+drop policy if exists "anon can read published farmaish" on public.requests;
+create policy "anon can read published farmaish"
+  on public.requests
+  for select
+  to anon
+  using (published = true and consent_to_publish = true);
+
+-- Still no update or delete policy: with RLS enabled and no policy for an
+-- action, that action is denied.
 
 create index if not exists requests_created_at_idx
   on public.requests (created_at desc);
+
+create index if not exists requests_published_idx
+  on public.requests (published, created_at desc);

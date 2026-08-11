@@ -110,7 +110,7 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .copyright-note { margin:25px 0 0; font-size:12px; opacity:.62; }
 .two-column { display:grid; grid-template-columns:1fr 1fr; gap:30px; background:var(--paper); max-width:none; padding-left:7vw; padding-right:7vw; }
 .farmaish-section { background:var(--paper); max-width:none; padding-left:7vw; padding-right:7vw; }
-.farmaish-section .farmaish-card { max-width:620px; }
+.farmaish-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start; }
 .consent { display:flex; align-items:flex-start; gap:9px; font-size:12px; line-height:1.45; cursor:pointer; }
 .consent input { width:16px; height:16px; margin-top:1px; flex:0 0 auto; accent-color:var(--maroon); }
 .farmaish-card .trap { position:absolute; left:-9999px; width:1px; height:1px; padding:0; border:0; opacity:0; }
@@ -123,11 +123,23 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .farmaish-card input:not([type="checkbox"]),.farmaish-card textarea { width:100%; border:1px solid #caa775; background:#fff9e9; padding:11px 13px; border-radius:7px; outline:none; }
 .farmaish-card input:not([type="checkbox"]):focus,.farmaish-card textarea:focus { border-color:var(--red); }
 .tiny-note { font-size:11px; margin:0; opacity:.65; text-align:center; }
-.letter-card { background:#dfe3c0; position:relative; padding-right:130px; min-height:245px; }
+.letter-card { background:#dfe3c0; position:relative; overflow:hidden; padding:25px 130px 25px 25px; min-height:262px; }
+/* The rule down the middle of an inland postcard, message side from address. */
+.letter-card:before { content:""; position:absolute; top:20px; bottom:20px; right:118px; width:1px; background:repeating-linear-gradient(#8fa07d 0 5px, transparent 5px 10px); }
 .postmark { color:#46604d; font-size:19px; font-weight:700; }
-blockquote { margin:28px 0 12px; font-size:20px; line-height:1.55; }
-.letter-card p { font-weight:700; }
-.stamp { position:absolute; right:25px; top:35px; width:82px; height:100px; display:grid; place-items:center; text-align:center; transform:rotate(6deg); border:7px dotted #f1e8c8; background:#efe0b5; color:#526a4f; }
+blockquote { margin:24px 0 14px; font-size:19px; line-height:1.55; }
+.letter-card p { font-weight:700; margin:4px 0; }
+.letter-song { color:#46604d; font-size:14px; }
+.letter-from { font-size:14px; }
+.letter-empty { font-weight:400 !important; font-size:15px; line-height:1.6; margin-top:22px; opacity:.75; }
+.stamp { position:absolute; right:22px; top:26px; width:84px; height:102px; display:grid; align-content:center; gap:6px; text-align:center; transform:rotate(6deg); border:7px dotted #f1e8c8; background:#efe0b5; color:#526a4f; }
+.stamp-word { font-size:15px; font-weight:700; }
+.stamp-denom { font-size:12px; letter-spacing:.05em; }
+/* Cancellation ring, clipped by the card edge the way a real one runs off. */
+.cancel { position:absolute; right:8px; top:78px; width:104px; height:104px; border-radius:50%; border:2px solid rgba(70,96,77,.45); opacity:.7; }
+.cancel:before, .cancel:after { content:""; position:absolute; left:12%; right:12%; height:2px; background:rgba(70,96,77,.4); }
+.cancel:before { top:42%; }
+.cancel:after { top:56%; }
 .memory-section { background:#f0dfba; max-width:none; }
 .memory-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
 .memory-grid button { min-height:100px; padding:12px 8px; border:1px solid var(--line); background:#e8d4a6; border-radius:12px; cursor:pointer; color:var(--ink); font-weight:700; }
@@ -154,4 +166,4 @@ footer { min-height:90px; background:#68261d; color:#f8e7c8; display:flex; align
 footer p { text-align:center; opacity:.85; }
 footer div:last-child { display:flex; gap:18px; white-space:nowrap; }
 @media(max-width:1100px){ nav{display:none}.song-grid{grid-template-columns:repeat(4,1fr)}.memory-grid{grid-template-columns:repeat(3,1fr)} }
-@media(max-width:760px){ .topbar{min-height:82px}.morning-time{display:none}.brand strong{font-size:28px}.brand small{font-size:14px}.hero{grid-template-columns:1fr}.tv-stage{min-height:410px;padding:35px 20px}.tv-unit{width:min(580px,100%)}.tv-shell{aspect-ratio:auto;padding:16px 16px 20px}.tv-screen{min-height:236px}.tv-controls{display:none}.tv-brand{left:50%}.hero-copy{padding:40px 7vw}h1{font-size:60px}.lede{font-size:22px}.featured-song{align-items:flex-start}.vinyl{width:95px}.song-grid{grid-template-columns:repeat(2,1fr)}.two-column,.archive{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(2,1fr)}.letter-card{padding-right:95px}.archive-cards{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.song-card h3{font-size:15px} }
+@media(max-width:760px){ .topbar{min-height:82px}.morning-time{display:none}.brand strong{font-size:28px}.brand small{font-size:14px}.hero{grid-template-columns:1fr}.tv-stage{min-height:410px;padding:35px 20px}.tv-unit{width:min(580px,100%)}.tv-shell{aspect-ratio:auto;padding:16px 16px 20px}.tv-screen{min-height:236px}.tv-controls{display:none}.tv-brand{left:50%}.hero-copy{padding:40px 7vw}h1{font-size:60px}.lede{font-size:22px}.featured-song{align-items:flex-start}.vinyl{width:95px}.song-grid{grid-template-columns:repeat(2,1fr)}.two-column,.archive,.farmaish-grid{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(2,1fr)}.letter-card{padding-right:95px}.archive-cards{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.song-card h3{font-size:15px} }

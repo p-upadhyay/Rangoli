@@ -58,7 +58,9 @@ export default function Privacy() {
       </p>
       <p>
         Your memory is not published anywhere unless you tick the box saying it may be. Leaving
-        it unticked still sends us the farmaish; it just stays private.
+        it unticked still sends us the farmaish; it just stays private. Even with the box
+        ticked, nothing appears on the site automatically — a farmaish is only shown as a
+        postcard if we read it and choose to feature it.
       </p>
       <p>
         Want yours removed? Write to the address below with the name and city you used and it
