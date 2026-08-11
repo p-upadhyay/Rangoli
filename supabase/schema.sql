@@ -21,13 +21,17 @@ create table if not exists public.requests (
 
 alter table public.requests enable row level security;
 
--- Anonymous visitors may submit.
+-- Anonymous visitors may submit, but may not publish. `with check (true)` would
+-- accept whatever the client sends, letting a submitter set published = true
+-- and put their own text on the homepage. Pinning it to false closes that:
+-- the column defaults to false and the form never sends it, so ordinary
+-- submissions pass and a self-publishing insert is rejected.
 drop policy if exists "anon can submit a farmaish" on public.requests;
 create policy "anon can submit a farmaish"
   on public.requests
   for insert
   to anon
-  with check (true);
+  with check (published = false);
 
 -- Read access is gated twice: the sender must have ticked the consent box, and
 -- you must have marked the row published in the Table Editor. Nothing reaches
