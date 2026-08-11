@@ -15,12 +15,20 @@ export default function Privacy() {
 
       <p>
         Yaadon Ki Rangoli is an unofficial, fan-made nostalgia project. It is deliberately
-        simple: there are no accounts, no sign-ups, and no analytics or tracking scripts.
+        simple: there are no accounts and no sign-ups, and nothing here follows you around the
+        web.
       </p>
 
       <h2>What this site collects</h2>
       <p>
-        Nothing. The site sets no cookies of its own and stores nothing about you.
+        Visitor counts, through Vercel Analytics. It records which pages were opened, roughly
+        where in the world from, and what kind of device — all in aggregate, so we can tell that
+        a Sunday was busy without knowing who was listening.
+      </p>
+      <p>
+        It is cookieless: no cookies are set for analytics, nothing is kept in your browser&apos;s
+        storage, and you are not tracked across other sites. We build no profile of you and sell
+        nothing to anyone.
       </p>
 
       <h2>Music playback</h2>
