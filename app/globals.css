@@ -61,7 +61,6 @@ nav a:hover { color:var(--red); }
 .hero-copy { padding:55px 7vw 45px 6vw; display:flex; flex-direction:column; justify-content:center; }
 h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .lede { font-size:28px; margin:0 0 18px; }
-.episode-meta { display:flex; flex-wrap:wrap; gap:20px; padding:13px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:14px; }
 .featured-song { display:flex; gap:24px; align-items:center; margin-top:24px; }
 .featured-song h2 { margin:4px 0; font-size:25px; }
 .featured-song p,.featured-song small { margin:2px 0; display:block; }

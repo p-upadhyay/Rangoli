@@ -11,7 +11,6 @@ type YTPlayer = {
   previousVideo(): void;
   destroy(): void;
   getVideoData(): { title?: string; author?: string };
-  getPlaylist(): string[] | undefined;
 };
 
 type YTEvent = { target: YTPlayer; data: number };
@@ -54,7 +53,7 @@ function loadPlayerApi() {
 }
 
 export default function VintageTV() {
-  const { on, playing, now, setOn, setPlaying, setNow, setCount } = usePlayer();
+  const { on, playing, now, setOn, setPlaying, setNow } = usePlayer();
   const stage = useRef<HTMLDivElement>(null);
   const player = useRef<YTPlayer | null>(null);
 
@@ -78,10 +77,7 @@ export default function VintageTV() {
         // removes seeking — there is no scrubber in our own controls.
         playerVars: { listType: "playlist", list: PLAYLIST_ID, autoplay: 1, rel: 0, playsinline: 1, controls: 0 },
         events: {
-          onReady: (e) => {
-            e.target.playVideo();
-            setCount(e.target.getPlaylist()?.length ?? 0);
-          },
+          onReady: (e) => e.target.playVideo(),
           onStateChange: (e) => {
             setPlaying(e.data === YT.PlayerState.PLAYING);
             setNow(e.target.getVideoData().title ?? null);
@@ -97,9 +93,8 @@ export default function VintageTV() {
       if (stage.current) stage.current.innerHTML = "";
       setPlaying(false);
       setNow(null);
-      setCount(0);
     };
-  }, [live, setPlaying, setNow, setCount]);
+  }, [live, setPlaying, setNow]);
 
   return (
     <div className={`tv-unit ${live ? "is-live" : ""}`}>

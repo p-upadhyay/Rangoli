@@ -7,11 +7,9 @@ type PlayerValue = {
   playing: boolean;
   /** Title of the current track, or null when nothing is playing. */
   now: string | null;
-  count: number;
   setOn: (v: boolean | ((prev: boolean) => boolean)) => void;
   setPlaying: (v: boolean) => void;
   setNow: (v: string | null) => void;
-  setCount: (v: number) => void;
 };
 
 const PlayerContext = createContext<PlayerValue | null>(null);
@@ -21,11 +19,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [on, setOn] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [now, setNow] = useState<string | null>(null);
-  const [count, setCount] = useState(0);
 
   const value = useMemo(
-    () => ({ on, playing, now, count, setOn, setPlaying, setNow, setCount }),
-    [on, playing, now, count]
+    () => ({ on, playing, now, setOn, setPlaying, setNow }),
+    [on, playing, now]
   );
 
   return <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>;

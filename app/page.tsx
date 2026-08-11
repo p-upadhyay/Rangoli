@@ -1,4 +1,3 @@
-import EpisodeMeta from "@/components/EpisodeMeta";
 import FeaturedSong from "@/components/FeaturedSong";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
@@ -24,7 +23,6 @@ export default function Home() {
           <div className="hero-copy">
             <h1>सुप्रभात</h1>
             <p className="lede">Aaj ki subah, kuch purani<br />yaadon ke naam…</p>
-            <EpisodeMeta fallbackCount={songs.length} />
             <FeaturedSong fallback={songs[0]} />
           </div>
         </section>
