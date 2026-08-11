@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FeaturedSong from "@/components/FeaturedSong";
+import LocalTime from "@/components/LocalTime";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
 import VintageTV from "@/components/VintageTV";
@@ -15,7 +16,7 @@ export default function Home() {
         <nav>
           <a href="#yaadein">यादों के रंग</a>
         </nav>
-        <div className="morning-time"><span>☀</span><strong>8:00 AM</strong><small>Sunday ritual</small></div>
+        <LocalTime />
       </header>
 
       {/* Wraps both sections: the mood grid drives the TV up in the hero. */}
