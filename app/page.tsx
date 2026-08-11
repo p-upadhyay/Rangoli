@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FeaturedSong from "@/components/FeaturedSong";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
@@ -37,7 +38,11 @@ export default function Home() {
       <footer>
         <div className="footer-logo">◉ <strong>Yaadon Ki Rangoli</strong></div>
         <p>दूरदर्शन की यादगार परंपराओं को नमन · An unofficial fan-made nostalgia project. Not affiliated with Doordarshan.</p>
-        <div><a href="#">गोपनीयता</a><a href="#">उपयोग की शर्तें</a><a href="mailto:hello@example.com">संपर्क</a></div>
+        <div>
+          <Link href="/privacy">गोपनीयता</Link>
+          <Link href="/terms">उपयोग की शर्तें</Link>
+          <a href="mailto:chaiaurkahaniyan.official@gmail.com">संपर्क</a>
+        </div>
       </footer>
     </main>
   );
