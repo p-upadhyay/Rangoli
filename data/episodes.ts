@@ -28,6 +28,6 @@ export const memories: Memory[] = [
   { icon: "☂", title: "Ghar Ki Chat Se Baarish", playlistId: "PLKmt1HJ7JID0" },
   { icon: "☕", title: "Sardi Ki Subah", playlistId: "PLR8hEr_CR5Ls" },
   { icon: "⇝", title: "Bus Ka Khushnuma Safar", playlistId: "PLIXqCcJKDSx4" },
-  { icon: "✒", title: "Gulzar Subah" },
+  { icon: "✒", title: "Gulzar Subah", playlistId: "PLVTOsAuPIPqQ" },
   { icon: "☾", title: "Dost, Maggi aur Jagjit", playlistId: "PLF3rANb3ZomM" }
 ];
