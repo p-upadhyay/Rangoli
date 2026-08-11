@@ -113,13 +113,15 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .farmaish-section .farmaish-card { max-width:620px; }
 .consent { display:flex; align-items:flex-start; gap:9px; font-size:12px; line-height:1.45; cursor:pointer; }
 .consent input { width:16px; height:16px; margin-top:1px; flex:0 0 auto; accent-color:var(--maroon); }
-.trap { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+.farmaish-card .trap { position:absolute; left:-9999px; width:1px; height:1px; padding:0; border:0; opacity:0; }
 .form-error { color:var(--maroon); font-weight:700; }
 .listeners { margin:0; font-size:12px; opacity:.9; white-space:nowrap; }
 .farmaish-card,.letter-card { border:1px solid var(--line); border-radius:15px; padding:25px; background:rgba(255,247,230,.75); }
 .farmaish-card { display:grid; gap:12px; }
-.farmaish-card input,.farmaish-card textarea { width:100%; border:1px solid #caa775; background:#fff9e9; padding:11px 13px; border-radius:7px; outline:none; }
-.farmaish-card input:focus,.farmaish-card textarea:focus { border-color:var(--red); }
+/* Text fields only — this used to catch the consent checkbox and the honeypot
+   too, stretching the box to full width with 11px of padding. */
+.farmaish-card input:not([type="checkbox"]),.farmaish-card textarea { width:100%; border:1px solid #caa775; background:#fff9e9; padding:11px 13px; border-radius:7px; outline:none; }
+.farmaish-card input:not([type="checkbox"]):focus,.farmaish-card textarea:focus { border-color:var(--red); }
 .tiny-note { font-size:11px; margin:0; opacity:.65; text-align:center; }
 .letter-card { background:#dfe3c0; position:relative; padding-right:130px; min-height:245px; }
 .postmark { color:#46604d; font-size:19px; font-weight:700; }
