@@ -10,4 +10,6 @@
 //   "My Supermix" and other Made-for-you playlists
 //
 // If your URL shows a VL prefix (VLPLxxxx), drop the VL and keep the rest.
-export const PLAYLIST_ID = "PLEvO8ItK00Ko";
+// Annotated as `string` so the empty-value guard in VintageTV stays a legal
+// comparison — without it TS narrows to a literal type and rejects the check.
+export const PLAYLIST_ID: string = "PLEvO8ItK00Ko";
