@@ -25,7 +25,7 @@ export type Memory = {
 };
 
 export const memories: Memory[] = [
-  { icon: "☂", title: "Barsaat Ke Geet" },
+  { icon: "☂", title: "Ghar Ki Chat Se Baarish", playlistId: "PLKmt1HJ7JID0" },
   { icon: "☕", title: "Sardi Ki Subah" },
   { icon: "♡", title: "Bus Ka Khushnuma Safar", playlistId: "PLIXqCcJKDSx4" },
   { icon: "✿", title: "Lata Special" },
