@@ -10,4 +10,4 @@
 //   "My Supermix" and other Made-for-you playlists
 //
 // If your URL shows a VL prefix (VLPLxxxx), drop the VL and keep the rest.
-export const PLAYLIST_ID = "";
+export const PLAYLIST_ID = "PLEvO8ItK00Ko";
