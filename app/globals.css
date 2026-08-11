@@ -130,6 +130,7 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 blockquote { margin:24px 0 14px; font-size:19px; line-height:1.55; }
 .letter-card p { font-weight:700; margin:4px 0; }
 .letter-song { color:#46604d; font-size:14px; }
+.song-lead { color:#46604d; }
 .letter-from { font-size:14px; }
 .letter-empty { font-weight:400 !important; font-size:15px; line-height:1.6; margin-top:22px; opacity:.75; }
 .stamp { position:absolute; right:22px; top:26px; width:84px; height:102px; display:grid; align-content:center; gap:6px; text-align:center; transform:rotate(6deg); border:7px dotted #f1e8c8; background:#efe0b5; color:#526a4f; }

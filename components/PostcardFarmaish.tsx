@@ -54,8 +54,16 @@ export default function PostcardFarmaish() {
 
       {card ? (
         <>
-          {card.memory && <blockquote>{card.memory}</blockquote>}
-          <p className="letter-song">♪ {card.song}</p>
+          {/* With no memory written, the song request itself carries the card —
+              otherwise the blockquote leaves a hole where the quote should be. */}
+          {card.memory ? (
+            <>
+              <blockquote>{card.memory}</blockquote>
+              <p className="letter-song">♪ {card.song}</p>
+            </>
+          ) : (
+            <blockquote className="song-lead">♪ {card.song}</blockquote>
+          )}
           <p className="letter-from">— {card.name}, {card.city}</p>
         </>
       ) : (
