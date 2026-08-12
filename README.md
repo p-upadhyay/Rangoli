@@ -72,9 +72,12 @@ Constraints that shaped the code, worth knowing before changing it:
 
 ## Share card
 
-`app/opengraph-image.tsx` draws the link preview in code. To use real artwork
-instead, delete that file and drop a 1200x630 `opengraph-image.jpg` beside it.
-Point `metadataBase` in `app/layout.tsx` at your own domain when you have one.
+`app/opengraph-image.jpg` is the preview shown when the link is shared, at the
+1200x630 those cards expect. Replace the file to change it; keep the name and
+the dimensions. The full-resolution original is kept out of the repo.
+
+Point `metadataBase` in `app/layout.tsx` at your own domain when you have one —
+share tags need absolute URLs.
 
 ## Still to do
 
