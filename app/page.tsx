@@ -5,6 +5,7 @@ import Greeting from "@/components/Greeting";
 import ListenersTicker from "@/components/ListenersTicker";
 import LocalTime from "@/components/LocalTime";
 import PostcardFarmaish from "@/components/PostcardFarmaish";
+import RainOverlay from "@/components/RainOverlay";
 import ShareLinks from "@/components/ShareLinks";
 import MoodGrid from "@/components/MoodGrid";
 import { PlayerProvider } from "@/components/PlayerContext";
@@ -27,6 +28,8 @@ export default function Home() {
 
       {/* Wraps both sections: the mood grid drives the TV up in the hero. */}
       <PlayerProvider>
+        <RainOverlay />
+
         <section className="hero" id="top">
           <div className="tv-stage"><VintageTV /></div>
           <div className="hero-copy">

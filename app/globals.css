@@ -54,6 +54,19 @@ nav a:hover { color:var(--red); }
   0%   { box-shadow:inset 0 0 120px 30px #000; }
   100% { box-shadow:inset 0 0 50px #4a3626; }
 }
+/* Rain for the baarish playlist. z-index 19 keeps it under the paper grain (20)
+   and under the live TV (21), so it never falls across the YouTube player.
+   Each layer is one elongated drop tiled across a large cell, translated by
+   exactly one cell height so the loop is seamless. */
+.rain { position:fixed; inset:0; z-index:19; overflow:hidden; pointer-events:none; }
+.rain i { position:absolute; left:-20%; right:-20%; top:-60%; height:220%; display:block; background-repeat:repeat; animation:rainfall var(--speed) linear infinite; }
+.rain i:nth-child(1) { --tile:74px; --speed:.85s; background-image:radial-gradient(1.2px 20px at 50% 40%, rgba(226,240,248,.55), rgba(226,240,248,0)); background-size:58px 74px; }
+.rain i:nth-child(2) { --tile:112px; --speed:1.3s; background-image:radial-gradient(1.6px 28px at 50% 40%, rgba(226,240,248,.34), rgba(226,240,248,0)); background-size:96px 112px; }
+.rain i:nth-child(3) { --tile:58px; --speed:.62s; background-image:radial-gradient(1px 15px at 50% 40%, rgba(226,240,248,.3), rgba(226,240,248,0)); background-size:44px 58px; }
+@keyframes rainfall {
+  from { transform:rotate(12deg) translateY(0); }
+  to   { transform:rotate(12deg) translateY(var(--tile)); }
+}
 .tv-video { position:absolute; inset:0; z-index:3; background:#000; }
 .tv-video iframe { display:block; width:100%; height:100%; border:0; }
 .tv-hint { margin-top:12px; font-size:11px; color:#5d4326; opacity:.8; }
@@ -91,7 +104,7 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes waking { 0%,100% { opacity:.55 } 50% { opacity:1 } }
 @media (prefers-reduced-motion: reduce) {
-  .vinyl.is-spinning, .vinyl.is-waking, .tv-screen, .tv-warmup span, .tv-on .screen-glow { animation: none; }
+  .vinyl.is-spinning, .vinyl.is-waking, .tv-screen, .tv-warmup span, .tv-on .screen-glow, .rain i { animation: none; }
 }
 .primary-button { display:block; border:0; border-radius:999px; padding:13px 20px; color:white; background:var(--maroon); cursor:pointer; font-weight:700; text-align:center; }
 .primary-button.inline { width:max-content; margin-top:14px; font-size:13px; }

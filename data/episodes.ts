@@ -17,7 +17,7 @@ export const songs: Song[] = [
   { title: "Main Zindagi Ka Saath", film: "Hum Dono", year: 1961, artists: "Mohammed Rafi", mood: "Vidaai Geet" }
 ];
 
-import { NIGHT_PLAYLIST_ID } from "./playlist";
+import { NIGHT_PLAYLIST_ID, RAIN_PLAYLIST_ID } from "./playlist";
 
 export type Memory = {
   icon: string;
@@ -27,7 +27,7 @@ export type Memory = {
 };
 
 export const memories: Memory[] = [
-  { icon: "☂", title: "Ghar Ki Chat Se Baarish", playlistId: "PLKmt1HJ7JID0" },
+  { icon: "☂", title: "Ghar Ki Chat Se Baarish", playlistId: RAIN_PLAYLIST_ID },
   { icon: "☕", title: "Sardi Ki Subah", playlistId: "PLR8hEr_CR5Ls" },
   { icon: "⇝", title: "Bus Ka Khushnuma Safar", playlistId: "PLIXqCcJKDSx4" },
   { icon: "✒", title: "Gulzar Subah", playlistId: "PLVTOsAuPIPqQ" },
