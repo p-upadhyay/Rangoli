@@ -58,8 +58,7 @@ nav a:hover { color:var(--red); }
 .tv-video iframe { display:block; width:100%; height:100%; border:0; }
 .tv-hint { margin-top:12px; font-size:11px; color:#5d4326; opacity:.8; }
 .tv-copy { height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:7px; position:relative; z-index:2; text-align:center; }
-.tv-copy strong { font-size:38px; color:var(--maroon); }
-.tv-copy>span:nth-of-type(2) { font-size:25px; font-weight:700; }
+.tv-copy strong { font-size:46px; color:var(--maroon); }
 .tv-flower { font-size:46px; color:#d95e38; }
 .tv-copy button { margin-top:20px; width:110px; height:110px; border-radius:50%; border:0; color:white; background:var(--maroon); box-shadow:0 0 0 10px rgba(164,50,43,.12); cursor:pointer; font-weight:700; }
 .tv-on .screen-glow { animation: flicker 1.7s infinite; }
@@ -81,8 +80,11 @@ h1 { font-size:82px; color:var(--maroon); margin:4px 0 6px; line-height:1; }
 .featured-song { display:flex; gap:24px; align-items:center; margin-top:24px; }
 .featured-song h2 { margin:4px 0; font-size:25px; }
 .featured-song p,.featured-song small { margin:2px 0; display:block; }
-.vinyl { width:125px; aspect-ratio:1; flex:0 0 auto; border-radius:50%; background:repeating-radial-gradient(circle,#211510 0 6px,#322016 7px 11px); display:grid; place-items:center; box-shadow:0 8px 20px rgba(0,0,0,.25); }
-.vinyl span { width:35%; aspect-ratio:1; border-radius:50%; background:var(--gold); border:8px solid var(--red); }
+.vinyl { position:relative; overflow:hidden; width:125px; aspect-ratio:1; flex:0 0 auto; border-radius:50%; background:repeating-radial-gradient(circle,#211510 0 6px,#322016 7px 11px); display:grid; place-items:center; box-shadow:0 8px 20px rgba(0,0,0,.25); }
+/* Two glints, 180 degrees apart. The grooves are concentric and so identical at
+   every angle — without something off-axis, rotating the disc shows nothing. */
+.vinyl:before { content:""; position:absolute; inset:0; border-radius:50%; background:conic-gradient(rgba(255,246,226,.18) 0deg 15deg, transparent 15deg 175deg, rgba(255,246,226,.12) 175deg 192deg, transparent 192deg 360deg); }
+.vinyl span { position:relative; z-index:1; width:35%; aspect-ratio:1; border-radius:50%; background:var(--gold); border:8px solid var(--red); }
 .vinyl.is-spinning { animation: spin 4s linear infinite; }
 .vinyl.is-waking { animation: waking 1.6s ease-in-out infinite; }
 .song-pending { opacity:.6; }

@@ -137,8 +137,7 @@ export default function VintageTV() {
               <div className="screen-glow" />
               <div className="tv-copy">
                 <span className="tv-flower">✺</span>
-                <strong>रविवार</strong>
-                <span>सुबह 8:00 बजे</span>
+                <strong>रंगोली</strong>
                 <button onClick={() => setOn((v) => !v)}>{on ? "बंद करें" : "शुरू करें"}</button>
                 {on && <small className="tv-hint">data/playlist.ts में playlist ID डालिए</small>}
               </div>
